@@ -23,8 +23,8 @@ jobs:
     runs-on: self-hosted 
     steps:
       - name: Pull image from docker hub
-        run: docker pull tudourocky/mychat_backend:latest .
+        run: docker pull tudourocky/mychat_backend:latest
       - name: Delete old container
-        run: docker rm -f mychat-backend-container .
+        run: docker rm -f mychat-backend-container
       - name: Run Docker Container
         run: docker run -d -p 8000:8000 --name mychat-backend-container -e MONGO_PASSWORD='${{ secrets.MONGO_PASSWORD }}' tudourocky/mychat_backend .
