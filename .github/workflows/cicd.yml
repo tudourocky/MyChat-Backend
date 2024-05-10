@@ -13,7 +13,7 @@ jobs:
       - name: Login to docker hub
         run: docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"     
       - name: Build Docker Image
-        run: docker build -t tudourocky/mychat_backend
+        run: docker build -t tudourocky/mychat_backend:lastest
       - name: Publish Image to docker hub
         run: docker push tudourocky/mychat_backend:latest
  
