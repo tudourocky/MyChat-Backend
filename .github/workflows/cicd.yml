@@ -13,9 +13,9 @@ jobs:
       - name: Login to docker hub
         run: docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"     
       - name: Build Docker Image
-        run: docker build -t tudourocky/mychat_backend.
+        run: docker build -t tudourocky/mychat_backend .
       - name: Publish Image to docker hub
-        run: docker push tudourocky/mychat_backend:latest.
+        run: docker push tudourocky/mychat_backend:latest .
  
  
   deploy:
@@ -23,8 +23,8 @@ jobs:
     runs-on: self-hosted 
     steps:
       - name: Pull image from docker hub
-        run: docker pull tudourocky/mychat_backend:latest.
+        run: docker pull tudourocky/mychat_backend:latest .
       - name: Delete old container
-        run: docker rm -f mychat-backend-container.
+        run: docker rm -f mychat-backend-container .
       - name: Run Docker Container
-        run: docker run -d -p 8000:8000 --name mychat-backend-container -e MONGO_PASSWORD='${{ secrets.MONGO_PASSWORD }}' tudourocky/mychat_backend.
+        run: docker run -d -p 8000:8000 --name mychat-backend-container -e MONGO_PASSWORD='${{ secrets.MONGO_PASSWORD }}' tudourocky/mychat_backend .
